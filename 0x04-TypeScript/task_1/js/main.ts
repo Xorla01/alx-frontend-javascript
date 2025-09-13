@@ -52,7 +52,7 @@ interface StudentConstructor {
   new (firstName: string, lastName: string, age: number, location: string): StudentClassInterface;
 }
 
-class StudentClass implements StudentClassInterface {
+class StudentClass {
   firstName: string;
   lastName: string;
   age: number;
@@ -78,3 +78,4 @@ class StudentClass implements StudentClassInterface {
 const Student: StudentConstructor = StudentClass;
 
 module.exports = { StudentClass, Student };
+
