@@ -4,7 +4,7 @@ interface Teacher {
   fullTimeEmployee: boolean;  // always required
   yearsOfExperience?: number; // optional
   location: string;           // always required
-  [key: string]: string | number | boolean; // allows extra properties
+  [key: string]: any; // allows extra properties
 }
 
 const teacher: Teacher = {
@@ -78,3 +78,4 @@ console.log(printTeacher("Alice", "Johnson")); // Output: A. Johnson
 
 console.log(director1);
 console.log(teacher); 
+
