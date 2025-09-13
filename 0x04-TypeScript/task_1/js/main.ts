@@ -4,10 +4,15 @@ interface Teacher {
   fullTimeEmployee: boolean;  // always required
   yearsOfExperience?: number; // optional
   location: string;           // always required
-  [key: string]: any; // allows extra properties
+  [key: string]: any;         // allows extra properties
 }
 
-const teacher: Teacher = {
+interface Director extends Teacher {
+  numberOfReports: number;
+}
+
+// Example objects
+const teacher1: Teacher = {
   firstName: "John",
   lastName: "Doe",
   fullTimeEmployee: true,
@@ -15,12 +20,7 @@ const teacher: Teacher = {
   contract: true
 };
 
-// Directors interface extending Teacher
-interface Director extends Teacher {
-  numberOfReports: number;
-}
-
-const director1: Directors = {
+const director1: Director = {
   firstName: "Alice",
   lastName: "Johnson",
   fullTimeEmployee: true,
@@ -29,32 +29,30 @@ const director1: Directors = {
   contract: true
 };
 
-
-// Interface for the function
-function printTeacher({ firstName, lastName }: Teacher): string {
-  return `${firstName} ${lastName}`;
-}
+// printTeacherFunction and Implementation
 interface printTeacherFunction {
   (teacher: { firstName: string; lastName: string }): string;
 }
 
-// Function implementation
-const printTeacher: printTeacherFunction = (firstName, lastName) => {
-  return `${firstName}. ${lastName}`;
+const printTeacher: printTeacherFunction = ({ firstName, lastName }) => {
+  return `${firstName.charAt(0)}. ${lastName}`;
 };
 
+// Example usage
+console.log(printTeacher({ firstName: "John", lastName: "Doe" }));   // J. Doe
+console.log(printTeacher({ firstName: "Alice", lastName: "Smith" })); // A. Smith
 
-// Interface for the class methods
+// StudentClass Interface and Implementation
 export interface StudentClassInterface {
   workOnHomework(): string;
   displayName(): string;
 }
 
 interface StudentConstructor {
-  new (firstName: string, lastName: string): StudentClassInterface;
+  new (firstName: string, lastName: string, age: number, location: string): StudentClassInterface;
 }
 
-class StudentClass {
+class StudentClass implements StudentClassInterface {
   firstName: string;
   lastName: string;
   age: number;
@@ -70,11 +68,13 @@ class StudentClass {
   workOnHomework(): string {
     return "Currently working";
   }
+
+  displayName(): string {
+    return this.firstName;
+  }
 }
 
+// Alias for constructor
 const Student: StudentConstructor = StudentClass;
 
-// CommonJS export
 module.exports = { StudentClass, Student };
-
-
