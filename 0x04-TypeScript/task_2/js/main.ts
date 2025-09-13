@@ -35,7 +35,7 @@ class Teacher implements TeacherInterface {
 }
 
 // Function requirement
-export function createEmployee(salary: number | string): Director | Teacher {
+function createEmployee(salary: number | string): Director | Teacher {
   if (typeof salary === "number" && salary < 500) {
     return new Teacher();
   }
@@ -48,7 +48,7 @@ export function isDirector(employee: Director | Teacher): employee is Director {
 }
 
 // executeWork function
-export function executeWork(employee: Director | Teacher): string {
+function executeWork(employee: Director | Teacher): string {
   if (isDirector(employee)) {
     return employee.workDirectorTasks();
   } else {
@@ -76,5 +76,6 @@ console.log(executeWork(employee2));    // "Performing director tasks"
 
 console.log(teachClass("Math"));    // "Teaching Math"
 console.log(teachClass("History")); // "Teaching History"
+
 
 
