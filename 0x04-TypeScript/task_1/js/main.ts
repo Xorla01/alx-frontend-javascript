@@ -37,7 +37,7 @@ function printTeacher({ firstName, lastName }: Teacher): string {
 
 // Function implementation
 const printTeacher: printTeacherFunction = (firstName, lastName) => {
-  return `${firstName.charAt(0)}.${lastName}`;
+  return `${firstName}. ${lastName}`;
 };
 
 
@@ -78,6 +78,7 @@ console.log(printTeacher("Alice", "Johnson")); // Output: A. Johnson
 
 console.log(director1);
 console.log(teacher); 
+
 
 
 
