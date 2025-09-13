@@ -54,7 +54,7 @@ interface StudentConstructor {
   new (firstName: string, lastName: string): StudentClassInterface;
 }
 
-class StudentClass implements Student {
+class StudentClass {
   firstName: string;
   lastName: string;
   age: number;
@@ -76,4 +76,5 @@ const Student: StudentConstructor = StudentClass;
 
 // CommonJS export
 module.exports = { StudentClass, Student };
+
 
