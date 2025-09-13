@@ -66,30 +66,14 @@ class StudentClass implements Student {
     this.age = age;
     this.location = location;
   }
+
+  workOnHomework(): string {
+    return "Currently working";
+  }
 }
 
 const Student: StudentConstructor = StudentClass;
 
 // CommonJS export
 module.exports = { StudentClass, Student };
-
-
-
-
-
-// Example usage
-console.log(printTeacher("John", "Doe")); // Output: J. Doe
-console.log(printTeacher("Alice", "Johnson")); // Output: A. Johnson
-
-console.log(director1);
-console.log(teacher); 
-
-
-
-
-
-
-
-
-
 
