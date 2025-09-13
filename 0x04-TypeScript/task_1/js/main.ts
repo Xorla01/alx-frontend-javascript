@@ -31,8 +31,8 @@ const director1: Directors = {
 
 
 // Interface for the function
-interface printTeacherFunction {
-  (firstName: string, lastName: string): string;
+function printTeacher(teacher: Teacher): string {
+  return `${teacher.firstName} ${teacher.lastName} - Location: ${teacher.location}`;
 }
 
 // Function implementation
@@ -78,5 +78,6 @@ console.log(printTeacher("Alice", "Johnson")); // Output: A. Johnson
 
 console.log(director1);
 console.log(teacher); 
+
 
 
