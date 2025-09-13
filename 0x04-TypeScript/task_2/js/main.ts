@@ -1,32 +1,65 @@
-// Define the interfaces
-export interface Teacher {
-  firstName: string;
-  lastName: string;
+export interface DirectorInterface {
+  workFromHome(): string;
+  getCoffeeBreak(): string;
+  workDirectorTasks(): string;
 }
 
-export interface Director {
-  firstName: string;
-  lastName: string;
-  numberOfReports: number;
-}
-
-// Narrowing function
-export function isDirector(employee: Teacher | Director): employee is Director {
-  return (employee as Director).numberOfReports !== undefined;
-}
-
-// Execute work depending on role
-export function executeWork(employee: Teacher | Director): string {
-  if (isDirector(employee)) {
-    return "Getting to director tasks";
+export class Director implements DirectorInterface {
+  workFromHome(): string {
+    return "Working from home";
   }
-  return "Getting to work";
+  getCoffeeBreak(): string {
+    return "Getting a coffee break";
+  }
+  workDirectorTasks(): string {
+    return "Performing director tasks";
+  }
 }
 
-// Subjects
+export interface TeacherInterface {
+  workFromHome(): string;
+  getCoffeeBreak(): string;
+  workTeacherTasks(): string;
+}
+
+export class Teacher implements TeacherInterface {
+  workFromHome(): string {
+    return "Cannot work from home";
+  }
+  getCoffeeBreak(): string {
+    return "Cannot have a break";
+  }
+  workTeacherTasks(): string {
+    return "Performing teacher tasks";
+  }
+}
+
+// Function requirement
+export function createEmployee(salary: number | string): Director | Teacher {
+  if (typeof salary === "number" && salary < 500) {
+    return new Teacher();
+  }
+  return new Director();
+}
+
+// isDirector function
+export function isDirector(employee: Director | Teacher): employee is Director {
+  return employee instanceof Director;
+}
+
+// executeWork function
+export function executeWork(employee: Director | Teacher): string {
+  if (isDirector(employee)) {
+    return employee.workDirectorTasks();
+  } else {
+    return employee.workTeacherTasks();
+  }
+}
+
+// String literal type
 export type Subjects = "Math" | "History";
 
-// Teach class function
+// Function using the type
 export function teachClass(todayClass: Subjects): string {
   if (todayClass === "Math") {
     return "Teaching Math";
