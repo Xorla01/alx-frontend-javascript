@@ -36,7 +36,7 @@ export class Teacher implements TeacherInterface {
 
 // Function requirement
 export function createEmployee (salary: number | string): Director | Teacher {
-  if (salary === "number" && salary < 500) {
+  if (salary < 500) {
     return new Teacher();
   }
   return new Director();
@@ -66,5 +66,6 @@ export function teachClass(todayClass:Subjects): string {
   }
   return "Teaching History";
 }
+
 
 
