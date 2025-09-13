@@ -54,15 +54,17 @@ interface StudentConstructor {
   new (firstName: string, lastName: string): StudentClassInterface;
 }
 
-class StudentClass implements StudentClassInterface {
-  constructor(public firstName: string, public lastName: string) {}
+class StudentClass implements Student {
+  firstName: string;
+  lastName: string;
+  age: number;
+  location: string;
 
-  workOnHomework(): string {
-    return "Currently working";
-  }
-
-  displayName(): string {
-    return this.firstName;
+  constructor(firstName: string, lastName: string, age: number, location: string) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.age = age;
+    this.location = location;
   }
 }
 
@@ -81,6 +83,7 @@ console.log(printTeacher("Alice", "Johnson")); // Output: A. Johnson
 
 console.log(director1);
 console.log(teacher); 
+
 
 
 
