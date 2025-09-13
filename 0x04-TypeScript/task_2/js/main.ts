@@ -43,7 +43,7 @@ export function createEmployee (salary: number | string): Director | Teacher {
 }
 
 // isDirector function
-export function isDirector (employee: Director | Teacher): employee is Director {
+export function isDirector(employee: Director | Teacher): employee is Director {
   return employee instanceof Director;
 }
 
@@ -66,6 +66,7 @@ export function teachClass(todayClass:Subjects): string {
   }
   return "Teaching History";
 }
+
 
 
 
