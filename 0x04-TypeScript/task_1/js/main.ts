@@ -34,6 +34,9 @@ const director1: Directors = {
 function printTeacher({ firstName, lastName }: Teacher): string {
   return `${firstName} ${lastName}`;
 }
+interface printTeacherFunction {
+  (teacher: { firstName: string; lastName: string }): string;
+}
 
 // Function implementation
 const printTeacher: printTeacherFunction = (firstName, lastName) => {
@@ -78,6 +81,7 @@ console.log(printTeacher("Alice", "Johnson")); // Output: A. Johnson
 
 console.log(director1);
 console.log(teacher); 
+
 
 
 
