@@ -29,7 +29,6 @@ const director1: Directors = {
   contract: true
 };
 
-
 // Interface for the function
 interface printTeacherFunction {
   (firstName: string, lastName: string): string;
@@ -39,11 +38,6 @@ interface printTeacherFunction {
 function printTeacher(firstName: string, lastName: string): string {
   return `${firstName}. ${lastName}`;
 }
-
-const printTeacher: printTeacherFunction = (firstName, lastName) => {
-  return `${firstName.charAt(0)}. ${lastName}`;
-};
-
 
 // Interface for the class methods
 export interface StudentClassInterface {
@@ -72,14 +66,9 @@ const Student: StudentConstructor = StudentClass;
 // CommonJS export
 module.exports = { StudentClass, Student };
 
-
-
-
-
 // Example usage
 console.log(printTeacher("John", "Doe")); // Output: J. Doe
 console.log(printTeacher("Alice", "Johnson")); // Output: A. Johnson
 
 console.log(director1);
-console.log(teacher); 
-
+console.log(teacher);
