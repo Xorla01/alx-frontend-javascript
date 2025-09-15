@@ -35,10 +35,10 @@ interface printTeacherFunction {
   (firstName: string, lastName: string): string;
 }
 
-// Implement the function
-const printTeacher: printTeacherFunction = (firstName, lastName) => {
-  return `${firstName.charAt(0)}. ${lastName}`;
-};
+// Function declaration
+function printTeacher(firstName: string, lastName: string): string {
+  return `${firstName}. ${lastName}`;
+}
 
 // Export for CommonJS
 module.exports = printTeacher;
@@ -76,6 +76,7 @@ console.log(printTeacher("John", "Doe"));    // Output: J. Doe
 console.log(printTeacher("Alice", "Johnson")); // Output: A. Johnson
 console.log(director1);
 console.log(teacher);
+
 
 
 
