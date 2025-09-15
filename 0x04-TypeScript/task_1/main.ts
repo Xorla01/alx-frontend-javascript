@@ -37,7 +37,7 @@ interface printTeacherFunction {
 
 // Function implementation (checker looks for this exact string!)
 function printTeacher(firstName: string, lastName: string): string {
-  return `${firstName}. ${lastName}`;
+  return `${firstName.charAt(0)}. ${lastName}`;
 }
 
 // Student class interfaces
@@ -73,4 +73,5 @@ console.log(printTeacher("John", "Doe"));    // Output: J. Doe
 console.log(printTeacher("Alice", "Johnson")); // Output: A. Johnson
 console.log(director1);
 console.log(teacher);
+
 
