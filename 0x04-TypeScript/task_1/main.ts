@@ -30,15 +30,18 @@ const director1: Directors = {
   contract: true
 };
 
-// Interface for the function
+// Define the interface for the function
 interface printTeacherFunction {
   (firstName: string, lastName: string): string;
 }
 
-// Function implementation (checker looks for this exact string!)
-function printTeacher(firstName: string, lastName: string): string {
-  return `${firstName}. ${lastName}`;
-}
+// Implement the function
+const printTeacher: printTeacherFunction = (firstName, lastName) => {
+  return `${firstName.charAt(0)}. ${lastName}`;
+};
+
+// Export for CommonJS
+module.exports = printTeacher;
 
 // Student class interfaces
 export interface StudentClassInterface {
@@ -73,6 +76,7 @@ console.log(printTeacher("John", "Doe"));    // Output: J. Doe
 console.log(printTeacher("Alice", "Johnson")); // Output: A. Johnson
 console.log(director1);
 console.log(teacher);
+
 
 
 
