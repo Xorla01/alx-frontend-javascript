@@ -1,84 +1,88 @@
-// Teacher interface
+
+
 interface Teacher {
-  readonly firstName: string;   // only set at initialization
-  readonly lastName: string;    // only set at initialization
-  fullTimeEmployee: boolean;    // always required
-  yearsOfExperience?: number;   // optional
-  location: string;             // always required
-  [key: string]: string | number | boolean; // allows extra properties
+    readonly firstName: string, // using readonly before the property name 
+                                 // prevents the property from being assigned 
+                                 // a new value after the object is first initialized
+    fullTimeEmployee: boolean,
+    readonly lastName: string,
+    yearsOfExperience?: number,
+    location: string,
+    contract: any,
+
+    // creating an index-key to allow addition of any other attribute
+    // flexible index signature below
+    [key: string]: any;
+
 }
 
-const teacher: Teacher = {
-  firstName: "John",
-  lastName: "Doe",
-  fullTimeEmployee: true,
-  location: "Accra",
-  contract: true
-};
-
-// Directors interface extending Teacher
-interface Directors extends Teacher {
-  numberOfReports: number;
+// creating Directors interface
+// extending on the teachers interface
+interface Director extends Teacher {   
+    numberOfReports: number;
 }
 
+// Example usage of the Directors interface
 const director1: Directors = {
-  firstName: "Alice",
-  lastName: "Johnson",
-  fullTimeEmployee: true,
-  location: "Accra",
-  numberOfReports: 5,
-  contract: true
-};
+    firstName: 'John',
+    lastName: 'Doe',
+    location: 'London',
+    fullTimeEmployee: true,
+    numberOfReports: 17,
+  };
 
-// Define the interface for the function
+  // Log the director object to the console
+console.log(director1);
+
+// Define the interface for the printTeacher function
 interface printTeacherFunction {
   (firstName: string, lastName: string): string;
 }
+// Implement the function that matches the interface
 
-// Function declaration
-function printTeacher(firstName: string, lastName: string): string {
-  return `${firstName}. ${lastName}`;
+ // Implement the function that matches the interface
+ function printTeacher({ firstName, lastName }: { firstName: string, lastName: string }): string {
+    return `${firstName}. ${lastName}`;
 }
+  
+  // Example usage
+  console.log(printTeacher("John", "Doe"));
 
-// Export for CommonJS
-module.exports = printTeacher;
+  // writing a class named StudentClass
+  // constructor of the class should be describe through an interface
+  
+  // Task 1: Describe the constructor with an interface
 
-// Student class interfaces
-export interface StudentClassInterface {
-  workOnHomework(): string;
-  displayName(): string;
-}
-
-interface StudentConstructor {
-  new (firstName: string, lastName: string): StudentClassInterface;
-}
-
-// StudentClass implementation
-class StudentClass implements StudentClassInterface {
-  constructor(public firstName: string, public lastName: string) {}
-
-  workOnHomework(): string {
-    return "Currently working";
+  interface StudentConstructor {
+    firstName: string;
+    lastName: string;
   }
 
-  displayName(): string {
-    return this.firstName;
-  }
+// Task 2: Describe the class through an interface  
+interface StudentClassInterface{
+    // properties of the class
+    firstName: string;
+    lastName: string;
+    workOnHomework(): string;
+    displayName(): string;
 }
 
-const Student: StudentConstructor = StudentClass;
+// Write a class named StudentClass that implements the StudentClassInterface
+class StudentClass {
+  // properties of the class
+    firstName: string;
+    lastName: string;
 
-// CommonJS export (required by ALX tasks)
-module.exports = { StudentClass, Student };
+// The constructor accepts firstName and lastName arguments as described by the StudentConstructor interface
+    constructor(public firstName: string, public lastName: string) {}
 
-// Example usage
-console.log(printTeacher("John", "Doe"));    // Output: J. Doe
-console.log(printTeacher("Alice", "Johnson")); // Output: A. Johnson
-console.log(director1);
-console.log(teacher);
+    // method to return the student's full name
+    workOnHomework(): string {
+        return 'Currently working';
+    }
 
-
-
-
-
-
+    // method to return the student's full name
+    displayName(): string {
+        return this.lastName + ' ' +  this.firstName;
+    }
+}
